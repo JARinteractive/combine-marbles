@@ -138,7 +138,7 @@ extension Operator {
                 let time = $2
                 return Event<String>(time: time, type: .output("(\(number),\(letter))"))
             }
-            return output + [numbers.last?.1 ?? Event(time: 1, type: .finished)]
+            return output + [sortedEvents.last?.1 ?? Event(time: 1, type: .finished)]
         }.eraseToAnyPublisher()
         
         let result = PublisherViewModel<String>(combine)
