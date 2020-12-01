@@ -153,6 +153,7 @@ struct PublisherView: View {
                             .frame(width: 3, height: radius * 2 + 10)
                     }
                     .frame(width: radius * 2, height: radius * 2)
+                    .contentShape(Rectangle()) // expands touch area
                     .offset(x: event.time * geometry.size.width - radius, y: 0)
                     .gesture(DragGesture()
                                 .onChanged { value in
@@ -172,6 +173,7 @@ struct PublisherView: View {
                             .foregroundColor(.red)
                     }
                     .frame(width: radius * 2, height: radius * 2)
+                    .contentShape(Rectangle()) // expands touch area
                     .offset(x: event.time * geometry.size.width - radius, y: 0)
                     .gesture(DragGesture()
                                 .onChanged { value in
