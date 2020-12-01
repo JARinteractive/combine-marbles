@@ -54,7 +54,7 @@ extension Operator {
                         $0.isCompletion || ($0.value.map { Int($0) ?? -1 }?.isMultiple(of: 2) ?? false) }
                 }
                 .eraseToAnyPublisher())
-        return Operator(name: "filter", sources: [source], description: "publisher1.filter { $0 * 2 }", result: result)
+        return Operator(name: "filter", sources: [source], description: "publisher1.filter { $0.isMultiple(of: 2) }", result: result)
     }
     
     static var prefix: Operator {
@@ -138,11 +138,11 @@ extension Operator {
                 let time = $2
                 return Event<String>(time: time, type: .output("(\(number),\(letter))"))
             }
-            return output + [sortedEvents.last?.1 ?? Event(time: 1, type: .finished)]
+            return output + [numbers.last?.1 ?? Event(time: 1, type: .finished)]
         }.eraseToAnyPublisher()
         
         let result = PublisherViewModel<String>(combine)
-        return Operator(name: "combine latest", sources: [source1, source2], description: "publisher1.combineLatest(publisher2)", result: result)
+        return Operator(name: "combineLatest", sources: [source1, source2], description: "publisher1.combineLatest(publisher2)", result: result)
     }
     
     static var merge: Operator {
@@ -306,6 +306,6 @@ extension Operator {
         }.eraseToAnyPublisher()
         
         let result = PublisherViewModel<String>(flatMapped)
-        return Operator(name: "withLatestFrom", sources: [source1, source2], description: "publisher1.withLatestFrom(publisher2)", result: result)
+        return Operator(name: "withLatestFrom*", sources: [source1, source2], description: "publisher1.withLatestFrom(publisher2)", result: result)
     }
 }

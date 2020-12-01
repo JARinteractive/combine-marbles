@@ -108,7 +108,7 @@ struct OperatorDetailView: View {
                     .padding(.horizontal, 10)
             }
             .padding()
-        }
+        }.frame(minWidth: 500, maxWidth: .infinity)
     }
 }
 

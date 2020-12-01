@@ -12,7 +12,7 @@ struct OperatorListView: View {
                     .padding()
             }
         }
-        .frame(minWidth: 225)
+        .frame(minWidth: 200)
     }
 }
 

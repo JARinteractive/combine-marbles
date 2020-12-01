@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selected: Operator?
+    @State private var selected: Operator? = Operator.map
 
     var body: some View {
         NavigationView {
@@ -9,6 +9,7 @@ struct ContentView: View {
             
             selected.map {
                 OperatorDetailView(combineOperator: $0)
+                    .layoutPriority(1)
             }
         }
         .frame(minWidth: 700, minHeight: 300)
